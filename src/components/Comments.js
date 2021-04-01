@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { Card, Container, Row } from "react-bootstrap";
-import { useLocation } from "react-router";
+import { Container } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 import { Context } from "..";
 import Commentary from "./Commentary";
 
@@ -20,6 +20,7 @@ const Comments = () => {
           text={commentary.text}
           userId={commentary.userId}
           deviceId={commentary.deviceId}
+          key={commentary.id}
         /> 
       ))}
     </Container>

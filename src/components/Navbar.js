@@ -2,14 +2,15 @@ import React, { useContext } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
-import {  SHOP_ROUTE } from "../utils/consts";
-import { NavLink } from "react-router-dom";
+import {  LOGIN_ROUTE, SHOP_ROUTE } from "../utils/consts";
+import { NavLink, useHistory } from "react-router-dom";
 import { Context } from "../index";
 import { observer } from "mobx-react-lite";
 import  Container from "react-bootstrap/Container";
 
 export const NavBar = observer(() => {
   const { user } = useContext(Context);
+  const history = useHistory()
   return (
     <Navbar bg="dark" variant="dark" className="d-flex ">
       <Container>
@@ -18,7 +19,7 @@ export const NavBar = observer(() => {
         </NavLink>
         {user.isAuth ? (
           <Nav style={{ color: "#fff" }} className="ml-auto">
-            <Button variant={"outline-light"}>На Главную</Button>
+            <Button variant={"outline-light"} onClick={()=>history.push(SHOP_ROUTE)}>На Главную</Button>
             <Button
               variant="light"
               onClick={() => user.setIsAuth(false)}
@@ -29,10 +30,10 @@ export const NavBar = observer(() => {
           </Nav>
         ) : (
           <Nav style={{ color: "#fff" }} className="ml-auto">
-            <Button variant={"outline-light"}>На Главную</Button>
+            <Button variant={"outline-light"} onClick={() => history.push(SHOP_ROUTE)}>На Главную</Button>
             <Button
               variant={"outline-light"}
-              onClick={() => user.setIsAuth(true)}
+              onClick={() => history.push(LOGIN_ROUTE)}
               className="ml-2"
             >
               Авторизация

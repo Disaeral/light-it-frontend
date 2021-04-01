@@ -23,7 +23,7 @@ export default class CommentsStore {
                     Sed nibh eros, pretium id interdum in, molestie tempor est. Etiam
                     lacinia dignissim ipsum, in condimentum lacus rhoncus quis.`,
               userId: 2,
-              deviceId: 1,
+              deviceId: 3,
             },
             {
               id: 3,
@@ -34,7 +34,7 @@ export default class CommentsStore {
                     Sed nibh eros, pretium id interdum in, molestie tempor est. Etiam
                     lacinia dignissim ipsum, in condimentum lacus rhoncus quis.`,
               userId: 3,
-              deviceId: 1,
+              deviceId: 5,
             },
           ];
           makeAutoObservable(this)

@@ -2,18 +2,6 @@ import { makeAutoObservable } from "mobx";
 
 export default class DeviceStore {
   constructor() {
-    this._types = [
-      { id: 1, name: "Смартфоны" },
-      { id: 2, name: "Холодильники" },
-      { id: 3, name: "Телевизоры" },
-      { id: 4, name: "Компьютеры" },
-    ];
-    this._brands = [
-      { id: 1, name: "Apple" },
-      { id: 2, name: "Samsung" },
-      { id: 3, name: "Huawei" },
-      { id: 4, name: "Sony" },
-    ];
     this._devices = [
       {
         id: 1,
@@ -88,38 +76,15 @@ export default class DeviceStore {
           "https://cdn.discordapp.com/attachments/449223524209393696/816406855949615184/9e4e5196a429e8a8.png",
       },
     ];
-    this._selectedType = {};
-    this._selectedBrand = {};
+
     makeAutoObservable(this);
   }
-  setTypes(types) {
-    this._types = types;
-  }
-  setBrands(brands) {
-    this._brands = brands;
-  }
-  setDrands(devices) {
+
+  setDevices(devices) {
     this._devices = devices;
   }
-  setSelectedType(type) {
-    this._selectedType = type;
-  }
-  setSelectedBrand(brand) {
-    this._selectedBrand = brand;
-  }
-  get types() {
-    return this._types;
-  }
-  get brands() {
-    return this._brands;
-  }
+
   get devices() {
     return this._devices;
-  }
-  get selectedType() {
-    return this._selectedType;
-  }
-  get selectedBrand() {
-      return this._selectedBrand
   }
 }
