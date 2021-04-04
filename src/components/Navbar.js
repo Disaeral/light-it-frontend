@@ -9,8 +9,15 @@ import { observer } from "mobx-react-lite";
 import  Container from "react-bootstrap/Container";
 
 export const NavBar = observer(() => {
+  
   const { user } = useContext(Context);
   const history = useHistory()
+
+  const logOut = () => {
+    user.setUser({})
+    user.setIsAuth(false)
+    localStorage.removeItem('token')
+  }
   return (
     <Navbar bg="dark" variant="dark" className="d-flex ">
       <Container>
@@ -22,7 +29,7 @@ export const NavBar = observer(() => {
             <Button variant={"outline-light"} onClick={()=>history.push(SHOP_ROUTE)}>На Главную</Button>
             <Button
               variant="light"
-              onClick={() => user.setIsAuth(false)}
+              onClick={() => logOut()}
               className="ml-2"
             >
               Выйти
