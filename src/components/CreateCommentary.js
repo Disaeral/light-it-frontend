@@ -1,7 +1,10 @@
-import React from "react";
-import { Button, Card, Container, Form, Image, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Card, Container, Form, Image } from "react-bootstrap";
 import star from '../assets/star.png'
 const CreateCommentary = () => {
+
+  const [text, setText] = useState("")
+  const [stars, setStars] = useState(0)
   return (
     <Container className="p-3">
       <Card className="d-flex flex-column">

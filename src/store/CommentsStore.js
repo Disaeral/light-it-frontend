@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 
 export default class CommentsStore {
     constructor () {
-        this._comments = [
+        this._deviceComments = [
             {
               id: 1,
               rate: 3,
@@ -39,11 +39,11 @@ export default class CommentsStore {
           ];
           makeAutoObservable(this)
     }
-    setComments(comments) {
-        this._comments = comments
+    setDeviceComments(comments) {
+        this._deviceComments = comments
     }
-    get comments() {
-        return this._comments
+    get deviceComments() {
+        return this._deviceComments
     }
 
 }

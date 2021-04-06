@@ -1,23 +1,14 @@
 import { observer } from "mobx-react-lite";
-import React, { useContext } from "react";
+import React from "react";
 import { Row } from "react-bootstrap";
-import { Context } from "..";
 import DeviceItem from "./DeviceItem";
-const DeviceList = observer(({devices}) => {
-  
-  console.log(devices)
+const DeviceList = observer(({ devices }) => {
   return (
     <Row className="d-flex">
-      {devices.rows && devices.rows.map((device) => {
-        return (
-          <DeviceItem
-            key={device.id}
-            device={device}
-           
-            
-          />
-        );
-      })}
+      {devices.rows &&
+        devices.rows.map((device) => {
+          return <DeviceItem key={device.id} device={device} />;
+        })}
     </Row>
   );
 });

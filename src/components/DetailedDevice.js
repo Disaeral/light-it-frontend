@@ -13,12 +13,13 @@ const DetailedDevice = () => {
         getOneDevice(id).then(data=>setDevice(data))
       }, []
     )
-    console.log(device)
     return (
         <>
+        {console.log(process.env.REACT_APP_API_URL + device.img)}
           <Row>
         <Col md={4}>
-          <Image src={process.env.REACT_APP_API_URL + device.img} width={300} height={300} />
+          <Image src={process.env.REACT_APP_API_URL + device.img} 
+          width={300} height={300} />
         </Col>
         <Col md={8} className="d-flex flex-column justify-content-between">
           <div>
