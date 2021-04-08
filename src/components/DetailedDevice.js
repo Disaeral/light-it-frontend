@@ -10,7 +10,7 @@ const DetailedDevice = () => {
 
   useEffect(() => {
     getOneDevice(id).then((data) => setDevice(data));
-  }, []);
+  }, [id]);
   return (
     <>
       

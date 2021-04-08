@@ -10,7 +10,7 @@ const Comments = observer(() => {
   const [comments, setComments] = useState([])
   useEffect(()=>{
     getDeviceComments(id).then(data=>setComments(data))
-  },[])
+  },[id])
   //исследование технологическог процесса формирования фотокаталитических плазменно-электролитных покрытий на поверхности магниевых сплавов
   return (
     <Container>

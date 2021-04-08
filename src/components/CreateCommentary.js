@@ -9,7 +9,7 @@ import { observer } from "mobx-react-lite";
 const CreateCommentary = observer(() => {
   const { id } = useParams();
   const [text, setText] = useState("");
-  const [stars, setStars] = useState(0);
+  const [stars, setStars] = useState(1);
 
   const create = (text, stars) => {
     const comment = new FormData();
@@ -23,7 +23,7 @@ const CreateCommentary = observer(() => {
       })
       .then(() => {
         setText("");
-        setStars(0)
+        setStars(1)
       });
     console.log(comment);
   };

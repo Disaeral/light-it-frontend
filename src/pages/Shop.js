@@ -10,7 +10,7 @@ const Shop = observer(() => {
 
     useEffect(()=>{
         getDevices().then(data=>device.setDevices(data))
-    }, [])
+    }, [device])
   return (
     
     <Container className="pt-3">
