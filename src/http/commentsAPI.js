@@ -1,9 +1,12 @@
-import axios from "axios"
+import { $host, $authHost} from './index'
 
-const $commentsHost = axios.create({
-    baseURL: process.env.REACT_APP_COMMENTS_API_URL
-})
+ 
 export const getDeviceComments = async (id) => {
-    const {data} = await $commentsHost.get('/api/reviews/' + id)
+    const {data} = await $host.get('/api/reviews/' + id)
+    return data
+}
+
+export const createComment = async (id, review) => {
+    const {data} = await $authHost.post('/api/reviews/' + id, review)
     return data
 }

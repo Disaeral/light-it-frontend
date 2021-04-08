@@ -12,8 +12,10 @@ const Shop = observer(() => {
         getDevices().then(data=>device.setDevices(data))
     }, [])
   return (
+    
     <Container className="pt-3">
-      <DeviceList devices={device.devices}/>
+      {console.log(device.devices)}
+      <DeviceList devices={device.devices.rows}/>
     </Container>
   );
 });

@@ -3,8 +3,9 @@ import { Container } from "react-bootstrap";
 import {  useParams } from "react-router-dom";
 import { getDeviceComments } from "../http/commentsAPI";
 import Commentary from "./Commentary";
+import {observer} from 'mobx-react-lite'
 
-const Comments = () => {
+const Comments = observer(() => {
     const {id} = useParams()
   const [comments, setComments] = useState([])
   useEffect(()=>{
@@ -16,19 +17,20 @@ const Comments = () => {
       {console.log(comments)}
       <div style={{ fontSize: 32 }}>Отзывы</div>
       {comments.length === 0 ? <p>Отзывов пока нет...</p>: null}
+      {console.log(comments)}
       {comments.map((commentary) => (
           
         <Commentary
           id={commentary.id}
-          rate={commentary.rate}
+          rate={commentary.rating}
           text={commentary.text}
-          userId={commentary.created_by.id}
-          deviceId={commentary.product}
+          userId={commentary.userId}
+          deviceId={commentary.deviceId}
           key={commentary.id}
         /> 
       ))}
     </Container>
   );
-};
+});
 
 export default Comments;
