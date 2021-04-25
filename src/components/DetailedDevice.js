@@ -7,17 +7,23 @@ import { getOneDevice } from "../http/deviceAPI";
 
 const DetailedDevice = () => {
   const [device, setDevice] = useState({});
-  const [rating, setRating] = useState([])
+  const [rating, setRating] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
     getOneDevice(id).then((data) => setDevice(data));
-    getDeviceComments(id).then(data=>setRating((data.map(comment=>comment.rating).reduce((acc, rate)=>acc+=rate)/data.length).toFixed(2)))
-    
+    getDeviceComments(id).then((data) =>
+      setRating(
+        (
+          data
+            .map((comment) => comment.rating)
+            .reduce((acc, rate) => (acc += rate)) / data.length
+        ).toFixed(2)
+      )
+    );
   }, []);
   return (
     <>
-      
       <Row>
         <Col md={4}>
           <Image

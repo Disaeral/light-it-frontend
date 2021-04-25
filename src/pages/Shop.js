@@ -6,16 +6,14 @@ import DeviceList from "../components/DeviceList";
 import { getDevices } from "../http/deviceAPI";
 
 const Shop = observer(() => {
-    const {device} = useContext(Context)
+  const { device } = useContext(Context);
+  useEffect(() => {
+    getDevices().then((data) => device.setDevices(data));
+  }, []);
 
-    useEffect(()=>{
-        getDevices().then(data=>device.setDevices(data))
-    }, [device])
   return (
-    
     <Container className="pt-3">
-      {console.log(device.devices)}
-      <DeviceList devices={device.devices.rows}/>
+      <DeviceList devices={device.devices.rows} />
     </Container>
   );
 });
