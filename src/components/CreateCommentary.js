@@ -1,31 +1,32 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Card, Container, Form, Image } from "react-bootstrap";
 import star from "../assets/star.png";
 import { useParams } from "react-router-dom";
-import { createComment } from "../http/commentsAPI";
+import { createComment, getDeviceComments } from "../http/commentsAPI";
 import jwt_decode from "jwt-decode";
 import { observer } from "mobx-react-lite";
+import { Context } from "..";
 
 const CreateCommentary = observer(() => {
   const { id } = useParams();
   const [text, setText] = useState("");
   const [stars, setStars] = useState(1);
-
+  const { comments } = useContext(Context);
   const create = (text, stars) => {
     const comment = new FormData();
     comment.append("text", text);
     comment.append("rating", stars);
     comment.append("deviceId", id);
     comment.append("userId", jwt_decode(localStorage.getItem("token")).id);
+    console.log(comments.deviceComments, "comments before");
     createComment(id, comment)
-      .then((data) => {
-        console.log(data);
+      .then(() => {
+        getDeviceComments(id).then((data) => comments.setDeviceComments(data));
       })
       .then(() => {
         setText("");
-        setStars(1)
+        setStars(1);
       });
-    console.log(comment);
   };
   return (
     <Container className="p-3">
@@ -60,7 +61,9 @@ const CreateCommentary = observer(() => {
             <Button
               variant={"outline-success"}
               className="m-2 ml-4"
-              onClick={() => create(text, stars)}
+              onClick={() => {
+                create(text, stars);
+              }}
             >
               Отправить
             </Button>

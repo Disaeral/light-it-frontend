@@ -11,17 +11,17 @@ const App = observer(() => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    check().then(() => {
-        user.setUser(true)
-        user.setIsAuth(true)
-    }).finally(() => setLoading(false))
-}, [user])
+    check()
+      .then(() => {
+        user.setUser(true);
+        user.setIsAuth(true);
+      })
+      .finally(() => setLoading(false));
+  }, []);
 
-if (loading) {
-    return <Spinner animation={"grow"}/>
-}
-
-  
+  if (loading) {
+    return <Spinner animation={"grow"} />;
+  }
 
   return (
     <>
