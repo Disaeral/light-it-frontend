@@ -23,3 +23,8 @@
 Версия в разработке, запуск: yarn start
 
 Backend: https://github.com/Disaeral/light-it-backend
+
+Скриншоты:
+![Alt text](/screenshots/LightItScreenShot1.png?raw=true "Screenshot 1")
+![Alt text](/screenshots/LightItScreenShot2.png?raw=true "Screenshot 2")
+![Alt text](/screenshots/LightItScreenShot3.png?raw=true "Screenshot 3")
