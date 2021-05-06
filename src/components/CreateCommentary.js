@@ -9,6 +9,7 @@ import { Context } from "..";
 
 const CreateCommentary = observer(() => {
   const { id } = useParams();
+  console.log(id)
   const [text, setText] = useState("");
   const [stars, setStars] = useState(1);
   const { comments } = useContext(Context);
@@ -18,7 +19,6 @@ const CreateCommentary = observer(() => {
     comment.append("rating", stars);
     comment.append("deviceId", id);
     comment.append("userId", jwt_decode(localStorage.getItem("token")).id);
-    console.log(comments.deviceComments, "comments before");
     createComment(id, comment)
       .then(() => {
         getDeviceComments(id).then((data) => comments.setDeviceComments(data));
